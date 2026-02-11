@@ -69,7 +69,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return true;
     },
-    async jwt({ token }) {
+    async jwt({ token, user }) {
+      if (user) {
+        // Initial sign-in — explicitly populate token from user object
+        // (Credentials provider may not auto-populate these fields)
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+        token.role = (user as any).role;
+      }
+
       if (token.email) {
         await dbConnect();
         const dbUser = await User.findOne({ email: token.email }).lean();
