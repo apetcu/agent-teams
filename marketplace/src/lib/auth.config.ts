@@ -21,4 +21,16 @@ export default {
   pages: {
     signIn: "/auth/signin",
   },
+  callbacks: {
+    jwt({ token }) {
+      return token;
+    },
+    session({ session, token }) {
+      if (token) {
+        session.user.id = (token.id ?? token.sub) as string;
+        session.user.role = token.role as "customer" | "vendor" | "admin";
+      }
+      return session;
+    },
+  },
 } satisfies NextAuthConfig;
