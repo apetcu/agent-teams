@@ -1,0 +1,15 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "teammateMode": "tmux",
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch",
+      "Git add",
+      "Git commit",
+      "Git push"
+    ]
+  }
+}

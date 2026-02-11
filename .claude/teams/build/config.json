@@ -1,0 +1,49 @@
+{
+  "name": "build",
+  "description": "Implementation team — coordinates backend, frontend, and testing work. Reusable across projects.",
+  "createdAt": 1770838278337,
+  "leadAgentId": "team-lead@build",
+  "leadSessionId": "8a16ebed-3122-4c50-8af1-96ff378f425b",
+  "members": [
+    {
+      "agentId": "team-lead@build",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    },
+    {
+      "agentId": "backend@build",
+      "name": "backend",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    },
+    {
+      "agentId": "frontend@build",
+      "name": "frontend",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    },
+    {
+      "agentId": "tester@build",
+      "name": "tester",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    }
+  ]
+}

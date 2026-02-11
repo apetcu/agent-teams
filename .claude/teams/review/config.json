@@ -1,0 +1,49 @@
+{
+  "name": "review",
+  "description": "Quality gate team — architecture, security, and UX review. Only this team can push to GitHub. Reusable across projects.",
+  "createdAt": 1770838278337,
+  "leadAgentId": "gate@review",
+  "leadSessionId": "",
+  "members": [
+    {
+      "agentId": "gate@review",
+      "name": "gate",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    },
+    {
+      "agentId": "architect@review",
+      "name": "architect",
+      "agentType": "Plan",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    },
+    {
+      "agentId": "security@review",
+      "name": "security",
+      "agentType": "Explore",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    },
+    {
+      "agentId": "ux@review",
+      "name": "ux",
+      "agentType": "Explore",
+      "model": "claude-opus-4-6",
+      "joinedAt": 1770838278337,
+      "tmuxPaneId": "",
+      "cwd": "/Users/adrian/Projects/Personal/agent-teams",
+      "subscriptions": []
+    }
+  ]
+}
