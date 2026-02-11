@@ -1,8 +1,9 @@
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import GitHub from "next-auth/providers/github";
+import Credentials from "next-auth/providers/credentials";
+import bcrypt from "bcryptjs";
 import dbConnect from "@/lib/db";
 import User from "@/models/User";
+import authConfig from "./auth.config";
 
 declare module "next-auth" {
   interface Session {
@@ -17,25 +18,41 @@ declare module "next-auth" {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   providers: [
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
-    GitHub({
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,
+    ...authConfig.providers,
+    Credentials({
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        const email = credentials?.email as string | undefined;
+        const password = credentials?.password as string | undefined;
+
+        if (!email || !password) return null;
+
+        await dbConnect();
+        const user = await User.findOne({ email }).select("+password");
+        if (!user || !user.password) return null;
+
+        const isValid = await bcrypt.compare(password, user.password);
+        if (!isValid) return null;
+
+        return {
+          id: user._id.toString(),
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        };
+      },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
-  session: {
-    strategy: "jwt",
-  },
-  pages: {
-    signIn: "/auth/signin",
-  },
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user, account }) {
+      // Credentials users register separately — skip auto-creation
+      if (account?.provider === "credentials") return true;
+
       if (!user.email) return false;
       await dbConnect();
       const existingUser = await User.findOne({ email: user.email });

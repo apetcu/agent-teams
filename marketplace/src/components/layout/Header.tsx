@@ -70,10 +70,16 @@ export default function Header() {
               </svg>
             </Link>
             <Link
-              href="/api/auth/signin"
+              href="/auth/signin"
               className="text-sm font-medium text-white bg-gray-900 px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
             >
               Sign In
+            </Link>
+            <Link
+              href="/auth/signup"
+              className="text-sm font-medium text-gray-700 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
+            >
+              Sign Up
             </Link>
 
             {/* Mobile menu button */}
